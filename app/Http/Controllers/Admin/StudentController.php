@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\Student;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class StudentController extends Controller
 {
@@ -15,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        echo 'teste aqui';
     }
 
     /**
@@ -36,7 +37,29 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $student = new Student();
+        $student->name_student = $data['name_student'];
+        $student->date_brith_student = date('Y-m-d H:i:s', strtotime($data['date_brith_student']));
+        $student->rg_student = $data['rg_student'];
+        $student->cpf_student = $data['cpf_student'];
+        $student->address_student = $data['address_student'];
+        $student->address_number_student = $data['address_number_student'];
+        $student->phone = $data['phone'];
+        $student->email = $data['email'];
+        $student->modalities_student = $data['modalities_student'];
+        $student->teacher_student = $data['teacher_student'];
+        $student->schedule_student = $data['schedule_student'];
+        $student->date_start_student = date('Y-m-d H:i:s', strtotime($data['date_start_student']));
+        $student->date_payday_student = date('Y-m-d H:i:s', strtotime($data['date_payday_student']));
+        $student->tax = $data['tax'];
+        $response = $student->save();
+
+        if($response){
+            return redirect('/');
+        }else{
+            echo 'Deu ruim';
+        }
     }
 
     /**
