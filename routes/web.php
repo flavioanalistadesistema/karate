@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index']);
 
-Route::resource('student', StudentController::class)->only([
-    'index', 'show', 'store'
+Route::resource('/student', StudentController::class)->only([
+    'index', 'show', 'store', 'create'
 ]);
 
 Route::get('/dashboard', function () {

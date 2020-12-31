@@ -31,6 +31,7 @@ class Student extends Model
         'name_student',
         'date_brith_student',
         'rg_student',
+        "cpf_student",
         'address_student',
         'address_number_student',
         'phone',
